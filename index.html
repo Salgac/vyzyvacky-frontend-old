@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="refresh" content="60">
+
+  <title>Vyzyvacky</title>
+
+  <script src="js/request.js"></script>
+  <script src="js/buildTable.js"></script>
+</head>
+
+<body></body>
+
+<script>
+  let url = 'http://localhost:3000/v1/score'
+
+  var _table_ = document.createElement('table'),
+    _tr_ = document.createElement('tr'),
+    _th_ = document.createElement('th'),
+    _td_ = document.createElement('td');
+
+  function fun(out) {
+    document.body.appendChild(buildHtmlTable(out));
+  }
+
+  getJSON(url, fun)
+
+</script>
+
+</html>
