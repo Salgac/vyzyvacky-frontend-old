@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  <meta http-equiv="refresh" content="60">
+
+  <title>Vyzyvacky</title>
+
+  <script src="js/links.js"></script>
+  <script src="js/request.js"></script>
+  <script src="js/buildTable.js"></script>
+</head>
+
+<body>
+  <div class="limiter">
+    <div class="container-table100">
+      <div class="wrap-table100">
+        <div class="table100">
+          <table id="table100">
+            <thead>
+              <tr class="table100-head">
+                <th class="column1">Poradie</th>
+                <th class="column5">Názov</th>
+                <th class="column6">Body</th>
+              </tr>
+            </thead>
+            <tbody id="tbody100">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  var _table_ = document.getElementById('table100'),
+    _tbody_ = document.getElementById('tbody100'),
+
+    _tr_ = document.createElement('tr'),
+    _th_ = document.createElement('th'),
+    _td_ = document.createElement('td');
+
+  function fun(out) {
+    buildHtmlTable(out, 2);
+  }
+
+
+  getJSON(url + "team_score", fun)
+
+</script>
+
+</html>
