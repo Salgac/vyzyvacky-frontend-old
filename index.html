@@ -10,6 +10,7 @@
 
   <title>Vyzyvacky</title>
 
+  <script src="js/links.js"></script>
   <script src="js/request.js"></script>
   <script src="js/buildTable.js"></script>
 </head>
@@ -17,8 +18,6 @@
 <body></body>
 
 <script>
-  let url = 'http://localhost:3000/v1/score'
-
   var _table_ = document.createElement('table'),
     _tr_ = document.createElement('tr'),
     _th_ = document.createElement('th'),
@@ -28,7 +27,7 @@
     document.body.appendChild(buildHtmlTable(out));
   }
 
-  getJSON(url, fun)
+  getJSON(url + "score", fun)
 
 </script>
 
