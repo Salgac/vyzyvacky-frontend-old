@@ -1,16 +1,23 @@
 // Builds the HTML Table out of myList json data from Ivy restful service.
 function buildHtmlTable(arr) {
-	var table = _table_.cloneNode(false),
-		columns = addAllColumnHeaders(arr, table);
+	var table = _table_//,//.cloneNode(false),
+	columns = addAllColumnHeaders(arr, table);
 	for (var i = 0, maxi = arr.length; i < maxi; ++i) {
 		var tr = _tr_.cloneNode(false);
-		for (var j = 0, maxj = columns.length; j < maxj; ++j) {
+		//order
+		var td = _td_.cloneNode(false);
+		td.appendChild(document.createTextNode((i + 1) + "."))
+		td.classList.add("column1");
+		tr.appendChild(td);
+		//row from arr
+		for (var j = 0, maxj = 4/*columns.length*/; j < maxj; ++j) {
 			var td = _td_.cloneNode(false);
 			cellValue = arr[i][columns[j]];
-			td.appendChild(document.createTextNode(arr[i][columns[j]] || ''));
+			td.appendChild(document.createTextNode(cellValue));
+			td.classList.add("column" + (j + 3));
 			tr.appendChild(td);
 		}
-		table.appendChild(tr);
+		_tbody_.appendChild(tr);
 	}
 	return table;
 }
@@ -31,6 +38,6 @@ function addAllColumnHeaders(arr, table) {
 			}
 		}
 	}
-	table.appendChild(tr);
+	//table.appendChild(tr);
 	return columnSet;
 }
