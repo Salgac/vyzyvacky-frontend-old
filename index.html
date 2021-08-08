@@ -7,56 +7,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-  <link rel="stylesheet" type="text/css" href="css/util.css">
+  <link rel="stylesheet" type="text/css" href="css/login.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 
-  <meta http-equiv="refresh" content="60">
+  <title>Vyzývačky</title>
 
-  <title>Vyzyvacky</title>
-
-  <script src="js/links.js"></script>
+  <!-- utility -->
+  <script src="js/davidshimjs-qrcodejs-04f46c6/qrcode.js"></script>
   <script src="js/request.js"></script>
-  <script src="js/buildTable.js"></script>
+
+  <!-- pages -->
+  <script src="js/login_page.js"></script>
+  <script src="js/main_page.js"></script>
 </head>
 
 <body>
-  <div class="limiter">
-    <div class="container-table100">
-      <div class="wrap-table100">
-        <div class="table100">
-          <table id="table100">
-            <thead>
-              <tr class="table100-head">
-                <th class="column1">Poradie</th>
-                <th class="column3">Meno</th>
-                <th class="column4">Priezvisko</th>
-                <th class="column5">Body</th>
-                <th class="column6">Skupina</th>
-              </tr>
-            </thead>
-            <tbody id="tbody100">
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!-- LOGIN and REGISTER page -->
+  <div class="login-page" id="login-page">
+    <div class="form">
+
+      <h1>Vyzývačky</h1>
+      <br><br>
+
+      <form class="register-form" method="POST" onsubmit="return register(this)">
+        <input name="code" type="text" placeholder="custom game code" maxlength="6" onkeydown="gameCodeHelper(this)" />
+        <input name="password" type="password" placeholder="password" />
+        <input name="password_confirmation" type="password" placeholder="repeat password" />
+        <!--<input type="text" placeholder="email address" />-->
+        <button>create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+      </form>
+
+      <form class="login-form" method="POST" onsubmit="return login(this)">
+        <input name="code" type="text" placeholder="game code" maxlength="6" onkeydown="gameCodeHelper(this)" />
+        <input name="password" type="password" placeholder="password" />
+        <button>login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+      //utility function for form toggle
+      $('.message a').click(function () {
+        $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+      });
+    </script>
   </div>
+
+  <!-- MAIN page -->
+  <div id="main-page" style="display: none;">
+    <h1 id="title"></h1>
+    <div id="qrcode"></div>
+  </div>
+
 </body>
-
-<script>
-  var _table_ = document.getElementById('table100'),
-    _tbody_ = document.getElementById('tbody100'),
-
-    _tr_ = document.createElement('tr'),
-    _th_ = document.createElement('th'),
-    _td_ = document.createElement('td');
-
-  function fun(out) {
-    buildHtmlTable(out, 4);
-  }
-
-  getJSON(url + "score", fun)
-
-</script>
-
-</html>
