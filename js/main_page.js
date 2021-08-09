@@ -1,4 +1,4 @@
-function main_init(response) {
+function main_init(request, response) {
 	var gameCode = response.game_code
 	var authToken = response.auth_token
 
@@ -12,6 +12,10 @@ function main_init(response) {
 		colorLight: '#ffffff',
 		correctionLevel: QRCode.CorrectLevel.H,
 	});
-	qr.makeCode(gameCode)
+	var loginObject = {
+		"code": gameCode,
+		"password": request.password
+	}
+	qr.makeCode(JSON.stringify(loginObject))
 
 }

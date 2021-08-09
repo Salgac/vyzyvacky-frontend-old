@@ -18,6 +18,6 @@ function postJSON(url, data, fun) {
 		body: JSON.stringify(data)
 	})
 		.then(res => res.json())
-		.then((out) => fun(out))
+		.then((out) => fun(data, out))
 		.catch(err => { throw err });
 }

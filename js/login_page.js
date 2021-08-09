@@ -5,7 +5,7 @@ function register(form) {
 		"password": form.password.value,
 		"password_confirmation": form.password_confirmation.value
 	};
-	postJSON(url_local + "sign_up", data, showPage);
+	postJSON(url + "sign_up", data, showPage);
 	form.reset();
 	return false;
 }
@@ -16,13 +16,13 @@ function login(form) {
 		"code": form.code.value,
 		"password": form.password.value
 	};
-	postJSON(url_local + "sign_in", data, showPage);
+	postJSON(url + "sign_in", data, showPage);
 	form.reset();
 	return false;
 }
 
 //"redirect" to main page
-function showPage(response) {
+function showPage(request, response) {
 	//hide login page and show main page
 	var loginPage = document.getElementById('login-page');
 	var mainPage = document.getElementById('main-page');
@@ -30,7 +30,7 @@ function showPage(response) {
 	loginPage.style.display = "none";
 	mainPage.style.display = "block";
 
-	main_init(response);
+	main_init(request, response);
 }
 
 //helper function for game code format
